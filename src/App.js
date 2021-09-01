@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SearchForm from './components/SearchForm';
 import ParcelEvents from './components/ParcelEvents';
+import { sampleData } from './utils/sampleData';
 import styled from 'styled-components';
 
 const { ipcRenderer } = window.require('electron');
@@ -30,26 +31,41 @@ function App() {
 
   const getEvents = (e, parcelId) => {
     e.preventDefault();
-    
-    (async () => {
+
+    /* Only for the demo :) */
+    if (parcelId === 'TEST') {
       setAppState({
         ...appState,
         loading: true,
-        parcelId: parcelId,
-        title: '',
       })
-
-      const result = await ipcRenderer.invoke('get-events', parcelId);
-      const { results, error, title } = result
-
-      setAppState({
-        events: results,
-        loading: false,
-        error: error,
-        title: title,
-        parcelId: parcelId,
-      })
-    })();
+      const timeOut = setTimeout(() => {
+          setAppState({
+          ...sampleData
+        })
+      }, 2000)
+      return () => clearTimeout(timeOut)
+    } else {
+      /* the real deal */
+      (async () => {
+        setAppState({
+          ...appState,
+          loading: true,
+          parcelId: parcelId,
+          title: '',
+        })
+  
+        const result = await ipcRenderer.invoke('get-events', parcelId);
+        const { results, error, title } = result
+  
+        setAppState({
+          events: results,
+          loading: false,
+          error: error,
+          title: title,
+          parcelId: parcelId,
+        })
+      })();
+    }
   }
 
   return (

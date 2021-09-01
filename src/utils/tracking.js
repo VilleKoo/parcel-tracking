@@ -35,7 +35,7 @@ const getTrackingData = (trackingID) => {
           });
         } else {
           results = [];
-          title = 'Voe rähmä, mittään ei löytynny!'
+          title = document.querySelector('.error-box').innerText
         }
         return {
           results,

@@ -33,13 +33,13 @@ function createWindow() {
   });
 
   const startUrl = process.env.ELECTRON_START_URL || url.format({
-      pathname: path.join(__dirname, '/../build/index.html'),
+      pathname: path.join(__dirname, '../../build/index.html'),
       protocol: 'file:',
       slashes: true
   });
   mainWindow.removeMenu();
   mainWindow.loadURL(startUrl);
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
   mainWindow.on('closed', function () {
     mainWindow = null
   })
