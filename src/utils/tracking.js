@@ -1,11 +1,5 @@
 const puppeteer = require('puppeteer');
 
-/**
- * 
- * @param {*} trackingID 
- * @returns 
- */
-
 const getTrackingData = (trackingID) => {
   return new Promise(async (resolve, reject) => {
     try {
