@@ -1,57 +1,82 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState, useEffect } from 'react';
+// import { useLocalStorage } from '../hooks/useLocalStorage';
+import styled from 'styled-components';
+import { BiSearch } from 'react-icons/bi';
 
 const SearchFormContainer = styled.div`
-  background: #494d73;
-  padding: 24px;
-`
-const Form = styled.form`
+  background: white;
+  padding: 18px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   display: flex;
-  flex-direction: column;
-  text-align: center;
-`
-const FormLabel = styled.label`
-  color: white;
-  font-size: 24px;
-  margin-bottom: 16px;
-`
-const FormInputText = styled.input`
-  font-size: 16px;
-  padding: 8px;
-`
+  align-items: center;
+`;
 
-const FormInputSubmit = styled.input`
-  background-color: #f2cc8f;
+const FormInputText = styled.input`
   border: 0;
+  // color: ${({ theme }) => theme.body};
   font-size: 16px;
-  font-weight: 700;
+  padding: 16px;
+  width: 100%;
+  ::placeholder {
+    color: #ddd;
+  }
+`;
+
+const FormInputSubmit = styled.button`
+  background-color: hsla(0, 84%, 64%, 1);
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 400;
   text-transform: uppercase;
-  margin-top: 8px;
-  padding: 8px;
-`
+  padding: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  &[disabled] {
+    cursor: not-allowed;
+    background-color: hsla(0, 84%, 64%, 0.5);
+  }
+`;
 
 export default function SearchForm({ handleSubmit }) {
-  const [value, setValue] = useState('');
-  
+  const [trackingcode, setValue] = useState(() => {
+    const saved = localStorage.getItem('trackingcode');
+    const initialValue = JSON.parse(saved);
+    return initialValue || '';
+  });
+  // const [trackingcode, setTrackingcode] = useLocalStorage('trackingcode', '');
+
+  useEffect(() => {
+    // storing input name
+    localStorage.setItem('trackingcode', JSON.stringify(trackingcode));
+  }, [trackingcode]);
+
   const onChange = (e) => {
-    const value = e.target.value.replace(/\W/g, '')
-    setValue(value);
+    const trackingcode = e.target.value.replace(/\W/g, '');
+    setValue(trackingcode);
   };
 
   return (
     <SearchFormContainer>
-      <Form onSubmit={(e) => handleSubmit(e, value)}>
-        <FormLabel htmlFor="search">
-            Enter your parcel id
-        </FormLabel>
-        <FormInputText 
-          type="text"
-          value={value}
-          onChange={onChange}
-          id="search"
-        />
-        <FormInputSubmit type="submit" value="Submit" disabled={!value.length}/>
-      </Form>
+      <span>
+        <BiSearch />
+      </span>
+      <FormInputText
+        type='text'
+        value={trackingcode}
+        onChange={onChange}
+        id='search'
+        placeholder='Enter your tracking code'
+      />
+      <FormInputSubmit
+        type='button'
+        value='Submit'
+        disabled={!trackingcode.length}
+        onClick={(e) => handleSubmit(e, trackingcode)}
+      >
+        Search
+      </FormInputSubmit>
     </SearchFormContainer>
-  )
+  );
 }

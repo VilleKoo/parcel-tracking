@@ -7,25 +7,20 @@ const ListItem = styled.li`
   font-size: 14px;
   display: flex;
   border-bottom: solid 1px #272727;
+  color: ${({ theme }) => theme.text};
   & span {
-      padding: 0 8px;
-      flex: 1;
-  } 
-`
+    padding: 0 8px;
+    flex: 1;
+  }
+`;
 
 export default function ParcelEvent({ event }) {
-  const { description, location, timestamp } = event
+  const { description, location, timestamp } = event;
   return (
     <ListItem>
-      <span>
-        {description}
-      </span>
-      <span>
-        {location}
-      </span>
-      <span>
-        {timestamp}
-      </span>
+      <span>{description}</span>
+      <span>{location}</span>
+      <span>{timestamp}</span>
     </ListItem>
-  )
+  );
 }

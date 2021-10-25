@@ -10,16 +10,13 @@ const LoadingContainer = styled.div`
   & p {
     margin-bottom: 24px;
   }
-`
+`;
 
 export default function Loading() {
   return (
     <LoadingContainer>
       <p>Loadings events</p>
-      <SpinnerDiamond 
-        color={'#ff8000'}
-        secondaryColor={'#394a58'}
-      />
+      <SpinnerDiamond color={"#ff8000"} secondaryColor={"#394a58"} />
     </LoadingContainer>
-  )
+  );
 }
