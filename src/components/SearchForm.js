@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { useLocalStorage } from '../hooks/useLocalStorage';
 import styled from 'styled-components';
 import { BiSearch } from 'react-icons/bi';
 
@@ -13,7 +12,6 @@ const SearchFormContainer = styled.div`
 
 const FormInputText = styled.input`
   border: 0;
-  // color: ${({ theme }) => theme.body};
   font-size: 16px;
   padding: 16px;
   width: 100%;
@@ -45,10 +43,8 @@ export default function SearchForm({ handleSubmit }) {
     const initialValue = JSON.parse(saved);
     return initialValue || '';
   });
-  // const [trackingcode, setTrackingcode] = useLocalStorage('trackingcode', '');
 
   useEffect(() => {
-    // storing input name
     localStorage.setItem('trackingcode', JSON.stringify(trackingcode));
   }, [trackingcode]);
 
@@ -60,7 +56,7 @@ export default function SearchForm({ handleSubmit }) {
   return (
     <SearchFormContainer>
       <span>
-        <BiSearch />
+        <BiSearch fill='#DDDDDD' />
       </span>
       <FormInputText
         type='text'
@@ -71,7 +67,6 @@ export default function SearchForm({ handleSubmit }) {
       />
       <FormInputSubmit
         type='button'
-        value='Submit'
         disabled={!trackingcode.length}
         onClick={(e) => handleSubmit(e, trackingcode)}
       >
