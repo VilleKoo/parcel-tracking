@@ -4,7 +4,6 @@ import SearchForm from './components/SearchForm';
 import ParcelEvents from './components/ParcelEvents';
 import TitleBar from './components/TitleBar';
 import Offline from './components/Offline';
-import ParcelInfo from './components/ParcelInfo';
 // Hooks
 import { LanguageProvider } from './hooks/LanguageContext';
 import useNetwork from './hooks/useNetwork';
@@ -100,11 +99,11 @@ function App() {
     network === 'online' ? (
       <>
         <SearchForm handleSubmit={getEvents} />
-        <ParcelInfo data={appState.info} />
         <ParcelEvents
           title={appState.title}
           events={appState.events}
           isLoading={isLoading}
+          parcelInfo={appState.info}
         />
         <LastFetched />
       </>

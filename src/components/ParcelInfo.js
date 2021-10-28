@@ -1,4 +1,9 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  padding: var(--spacing) calc(var(--spacing) * 8);
+`;
 
 export default function ParcelInfo({ data }) {
   if (!data.length) return null;
@@ -10,8 +15,8 @@ export default function ParcelInfo({ data }) {
       for (const [key, value] of Object.entries(item)) {
         i = `${key}: ${value}`;
       }
-      return <span key={idx}>{i}</span>;
+      return <span key={idx}>{i} </span>;
     });
 
-  return <div>{results}</div>;
+  return <Container>{results}</Container>;
 }
