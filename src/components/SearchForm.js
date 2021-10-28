@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../hooks/LanguageContext';
+import { useLastFetched } from '../hooks/LastFetchedContext';
 import useLocalStorage from '../hooks/useLocalStorage';
 import styled from 'styled-components';
 import { translations } from '../utils/constants';
@@ -42,6 +43,7 @@ const FormInputSubmit = styled.button`
 
 export default function SearchForm({ handleSubmit }) {
   const [trackingcode, setTrackingcode] = useLocalStorage('trackingcode', '');
+  const fetched = useLastFetched();
   const language = useLanguage();
 
   const onChange = (e) => {
@@ -64,9 +66,10 @@ export default function SearchForm({ handleSubmit }) {
       <FormInputSubmit
         type='button'
         disabled={!trackingcode.length}
-        onClick={(e) =>
-          handleSubmit(e, trackingcode, language.lang.toLowerCase())
-        }
+        onClick={(e) => {
+          handleSubmit(e, trackingcode, language.lang.toLowerCase());
+          fetched.setTime();
+        }}
       >
         {translations.search[language.lang]}
       </FormInputSubmit>

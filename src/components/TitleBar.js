@@ -7,7 +7,7 @@ import { useLanguage } from '../hooks/LanguageContext';
 import { translations } from '../utils/constants';
 
 const TitleBarContainer = styled.div`
-  background-color: hsla(216, 18%, 14%, 1);
+  background-color: var(--toolbar-color);
   color: white;
   padding: var(--spacing) calc(var(--spacing) * 3);
   font-size: 18px;

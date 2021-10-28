@@ -30,6 +30,11 @@ const translations = {
     EN: 'Boohoo, no network connection',
     SV: 'Jävla, inget nätverk',
   },
+  lastFetched: {
+    FI: 'Viimeksi haettu',
+    EN: 'Last fetched',
+    SV: 'Senaste sökningar',
+  },
 };
 
 export { languages, translations };

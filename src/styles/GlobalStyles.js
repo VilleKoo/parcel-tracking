@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
   :root {
-    --background-dark: #3e3e3e;
+    --background-dark: #2C394B;
     --background-light: #f7fafc;
     --primary-text-color-dark: #f7fafc;
     --primary-text-color-light: #f1f1f1;
@@ -39,11 +39,13 @@ const GlobalStyle = createGlobalStyle`
     --white: #ffffff;
     --red-solid: rgba(240, 86, 86, 1);
     --red-50: rgba(240, 86, 86, 0.5);
+    --toolbar-color: #1d222a;
 
     --spacing: 4px;
 
     --fontsize-small: 12px;
     --fontsize-normal: 16px;
+
   }
 
   body {
