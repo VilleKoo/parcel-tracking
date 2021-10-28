@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useLanguage } from '../hooks/LanguageContext';
+import useLocalStorage from '../hooks/useLocalStorage';
 import styled from 'styled-components';
 import { BiSearch } from 'react-icons/bi';
 
 const SearchFormContainer = styled.div`
   background: white;
-  padding: 18px;
+  padding: 16px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   display: flex;
   align-items: center;
@@ -38,19 +40,12 @@ const FormInputSubmit = styled.button`
 `;
 
 export default function SearchForm({ handleSubmit }) {
-  const [trackingcode, setValue] = useState(() => {
-    const saved = localStorage.getItem('trackingcode');
-    const initialValue = JSON.parse(saved);
-    return initialValue || '';
-  });
-
-  useEffect(() => {
-    localStorage.setItem('trackingcode', JSON.stringify(trackingcode));
-  }, [trackingcode]);
+  const [trackingcode, setTrackingcode] = useLocalStorage('trackingcode', '');
+  const language = useLanguage();
 
   const onChange = (e) => {
     const trackingcode = e.target.value.replace(/\W/g, '');
-    setValue(trackingcode);
+    setTrackingcode(trackingcode);
   };
 
   return (
@@ -68,7 +63,9 @@ export default function SearchForm({ handleSubmit }) {
       <FormInputSubmit
         type='button'
         disabled={!trackingcode.length}
-        onClick={(e) => handleSubmit(e, trackingcode)}
+        onClick={(e) =>
+          handleSubmit(e, trackingcode, language.lang.toLowerCase())
+        }
       >
         Search
       </FormInputSubmit>

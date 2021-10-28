@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
+// Components
 import SearchForm from './components/SearchForm';
 import ParcelEvents from './components/ParcelEvents';
 import TitleBar from './components/TitleBar';
 import Offline from './components/Offline';
+import ParcelInfo from './components/ParcelInfo';
+import LanguageSelect from './components/LanguageSelect';
+// Hooks
+import { LanguageProvider } from './hooks/LanguageContext';
 import useNetwork from './hooks/useNetwork';
 import useDarkerMode from './hooks/useDarkerMode';
+// Styles
 import styled, { ThemeProvider } from 'styled-components';
 import GlobalStyle from './styles/GlobalStyles';
 import { light, dark } from './styles/Themes';
-
+// Misc
 import { sampleData } from './utils/sampleData';
 const { ipcRenderer } = window.require('electron');
 
@@ -24,16 +30,15 @@ const AppContainer = styled.div`
 function App() {
   const [appState, setAppState] = useState({
     events: [],
+    info: [],
     error: false,
     title: '',
     parcelId: '',
   });
 
   const [theme, themeToggler] = useDarkerMode();
-
   const [isLoading, setIsLoading] = useState(false);
   const network = useNetwork();
-
   /**
    * Handles submitting form and updates the state.
    *
@@ -41,7 +46,7 @@ function App() {
    * @param {string} parcelId Parcel ID as an alphanumeric string
    */
 
-  const getEvents = (e, parcelId) => {
+  const getEvents = (e, parcelId, language) => {
     e.preventDefault();
 
     /* Only for the demo :) */
@@ -57,6 +62,7 @@ function App() {
       return () => clearTimeout(timeOut);
     } else {
       /* the real deal */
+
       (async () => {
         setIsLoading(true);
 
@@ -66,12 +72,18 @@ function App() {
           title: '',
         });
 
-        const result = await ipcRenderer.invoke('get-events', parcelId);
-        const { results, error, title } = result;
+        const result = await ipcRenderer.invoke(
+          'get-events',
+          parcelId,
+          language
+        );
+
+        const { results, error, title, info } = result;
         setIsLoading(false);
 
         setAppState({
           events: results,
+          info: info,
           error: error,
           title: title,
           parcelId: parcelId,
@@ -87,6 +99,7 @@ function App() {
     network === 'online' ? (
       <>
         <SearchForm handleSubmit={getEvents} />
+        <ParcelInfo data={appState.info} />
         <ParcelEvents
           title={appState.title}
           events={appState.events}
@@ -99,14 +112,17 @@ function App() {
   return (
     <ThemeProvider theme={theme === 'light' ? light : dark}>
       <GlobalStyle />
-      <TitleBar
-        title={'Parcel Tracking'}
-        handleClose={handleAppClose}
-        handleMinimize={handleAppMinimize}
-        toggleTheme={themeToggler}
-        isActive={theme === 'light' ? false : true}
-      />
-      <AppContainer>{content}</AppContainer>
+      <LanguageProvider>
+        <TitleBar
+          title={'Parcel Tracking'}
+          handleClose={handleAppClose}
+          handleMinimize={handleAppMinimize}
+          toggleTheme={themeToggler}
+          isActive={theme === 'light' ? false : true}
+        />
+        <LanguageSelect />
+        <AppContainer>{content}</AppContainer>
+      </LanguageProvider>
     </ThemeProvider>
   );
 }

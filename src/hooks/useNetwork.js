@@ -4,7 +4,6 @@ export default function useNetwork() {
   const [networkState, setNetworkState] = useState('online');
 
   useEffect(() => {
-    console.log('hello from use effect');
     window.addEventListener('offline', (e) => setNetworkState(e.type), false);
     window.addEventListener('online', (e) => setNetworkState(e.type), false);
 

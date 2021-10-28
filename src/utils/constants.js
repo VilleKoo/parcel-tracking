@@ -1,7 +1,7 @@
 const languages = {
-  EN: 'english',
-  FI: 'suomi',
-  SE: 'svenska',
+  FI: 'Suomi',
+  EN: 'English',
+  SV: 'Svenska',
 };
 
-export default languages;
+export { languages };

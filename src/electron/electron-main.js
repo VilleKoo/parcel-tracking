@@ -1,31 +1,31 @@
 const electron = require('electron');
-const { ipcMain } = require('electron');
+const path = require('path');
+const url = require('url');
 const tracking = require('../utils/tracking');
+const {
+  default: installExtension,
+  REACT_DEVELOPER_TOOLS,
+} = require('electron-devtools-installer');
 
 try {
   require('electron-reloader')(module);
 } catch (_) {}
 
-ipcMain.handle('get-events', async (event, arg) => {
-  const data = await tracking.getTrackingData(arg);
-  return data;
-});
-
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
+const { app, ipcMain, net, screen, BrowserWindow } = electron;
 
 ipcMain.handle('app:quit', () => app.quit());
 
-const path = require('path');
-const url = require('url');
+ipcMain.handle('get-events', async (event, arg, lang) => {
+  const data = await tracking.getTrackingData(arg, lang);
+  return data;
+});
 
 let mainWindow;
 
 function createWindow(isOnline) {
-  const display = electron.screen.getPrimaryDisplay();
+  const display = screen.getPrimaryDisplay();
   const width = display.bounds.width;
   const height = display.bounds.height;
-
   const browserWidth = 600;
   const browserHeight = 400;
 
@@ -57,16 +57,16 @@ function createWindow(isOnline) {
 
   mainWindow.removeMenu();
   mainWindow.loadURL(startUrl);
-  // mainWindow.webContents.openDevTools();
-  mainWindow.on('closed', function () {
-    mainWindow = null;
-  });
+  mainWindow.webContents.openDevTools();
+  mainWindow.on('closed', () => (mainWindow = null));
+  /* installExtension(REACT_DEVELOPER_TOOLS)
+    .then((name) => console.log(`Added Extension:  ${name}`))
+    .catch((err) => console.log('An error occurred: ', err)); */
 }
 
 app.whenReady().then(() => {
-  const { net } = require('electron');
+  // const { net } = require('electron');
   createWindow(net.isOnline());
-
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow(net.isOnline());
