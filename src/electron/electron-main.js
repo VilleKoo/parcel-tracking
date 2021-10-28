@@ -27,8 +27,8 @@ function createWindow(isOnline) {
   const display = screen.getPrimaryDisplay();
   const width = display.bounds.width;
   const height = display.bounds.height;
-  const browserWidth = 600;
-  const browserHeight = 400;
+  const browserWidth = 1024;
+  const browserHeight = 768;
 
   mainWindow = new BrowserWindow({
     title: 'Parcel Tracking',
