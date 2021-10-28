@@ -5,7 +5,6 @@ import ParcelEvents from './components/ParcelEvents';
 import TitleBar from './components/TitleBar';
 import Offline from './components/Offline';
 import ParcelInfo from './components/ParcelInfo';
-import LanguageSelect from './components/LanguageSelect';
 // Hooks
 import { LanguageProvider } from './hooks/LanguageContext';
 import useNetwork from './hooks/useNetwork';
@@ -24,7 +23,7 @@ const AppContainer = styled.div`
   height: 100%;
   height: calc(100vh - 46px);
   padding: 4vw;
-  overflow-y: scroll;
+  overflow-y: auto;
 `;
 
 function App() {
@@ -120,7 +119,6 @@ function App() {
           toggleTheme={themeToggler}
           isActive={theme === 'light' ? false : true}
         />
-        <LanguageSelect />
         <AppContainer>{content}</AppContainer>
       </LanguageProvider>
     </ThemeProvider>

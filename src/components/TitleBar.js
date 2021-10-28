@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ThemeToggler from './ThemeToggler';
+import LanguageSelect from './LanguageSelect';
 import { FiX, FiMinus } from 'react-icons/fi';
 
 const TitleBarContainer = styled.div`
@@ -98,6 +99,7 @@ export default function TitleBar({
       <TitleContainer>
         <h1>{title}</h1>
       </TitleContainer>
+      <LanguageSelect />
       <ThemeTogglerContainer>
         <ThemeToggler toggleTheme={toggleTheme} isActive={isActive} />
       </ThemeTogglerContainer>

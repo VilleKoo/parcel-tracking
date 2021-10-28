@@ -1,6 +1,22 @@
 import React from 'react';
 import { useLanguage } from '../hooks/LanguageContext';
+import styled from 'styled-components';
 import { languages } from '../utils/constants';
+
+const Select = styled.select`
+  background: transparent;
+  border: 0;
+  color: white;
+  font-size: 12px;
+  margin-right: 16px;
+  text-transform: uppercase;
+  &:hover {
+    cursor: pointer;
+  }
+  option {
+    color: black;
+  }
+`;
 
 export default function LanguageSelect() {
   const lala = useLanguage();
@@ -19,13 +35,13 @@ export default function LanguageSelect() {
 
   return (
     <div>
-      <select
+      <Select
         defaultValue={defaultLanguage}
         onChange={(e) => lala.changeLang(e.target.value)}
         aria-label='Select language'
       >
         {getLanguages(languages)}
-      </select>
+      </Select>
     </div>
   );
 }
