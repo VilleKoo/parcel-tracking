@@ -35,8 +35,15 @@ const GlobalStyle = createGlobalStyle`
     --primary-text-color-light: #f1f1f1;
     --darker-gray: #181a21;
     --light-gray: #ccc;
+    --medium-gray: #a8a8a8;
+    --white: #ffffff;
+    --red-solid: rgba(240, 86, 86, 1);
+    --red-50: rgba(240, 86, 86, 0.5);
 
     --spacing: 4px;
+
+    --fontsize-small: 12px;
+    --fontsize-normal: 16px;
   }
 
   body {
