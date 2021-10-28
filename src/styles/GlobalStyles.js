@@ -35,6 +35,8 @@ const GlobalStyle = createGlobalStyle`
     --primary-text-color-light: #f1f1f1;
     --darker-gray: #181a21;
     --light-gray: #ccc;
+
+    --spacing: 4px;
   }
 
   body {

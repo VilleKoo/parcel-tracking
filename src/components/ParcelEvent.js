@@ -2,14 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ListItem = styled.li`
-  margin-bottom: 16px;
-  padding-bottom: 8px;
+  margin-bottom: calc(var(--spacing) * 4);
+  padding-bottom: calc(var(--spacing) * 2);
   font-size: 14px;
   display: flex;
   border-bottom: solid 1px #272727;
   color: ${({ theme }) => theme.text};
   & span {
-    padding: 0 8px;
+    padding: 0 calc(var(--spacing) * 2);
     flex: 1;
   }
 `;

@@ -11,13 +11,13 @@ const EventsList = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
-  padding: 24px;
+  padding: calc(var(--spacing) * 6);
   margin: 0;
 `;
 
 const EventsTitle = styled.h4`
   text-align: center;
-  margin: 24px 0;
+  margin: calc(var(--spacing) * 6) 0;
 `;
 
 export default function ParcelEvents({ events, title, isLoading }) {

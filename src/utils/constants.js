@@ -4,4 +4,32 @@ const languages = {
   SV: 'Svenska',
 };
 
-export { languages };
+const translations = {
+  appTitle: {
+    FI: 'Lähetysten seuranta',
+    EN: 'Item Tracking',
+    SV: 'Försändelseuppföljning',
+  },
+  loading: {
+    FI: 'Ladataan',
+    EN: 'Loading',
+    SV: 'Laddar',
+  },
+  search: {
+    FI: 'Hae',
+    EN: 'Search',
+    SV: 'Sök',
+  },
+  placeholder: {
+    FI: 'Syötä lähetystunnus',
+    EN: 'Enter the item ID',
+    SV: 'Mata in försändelsekoden',
+  },
+  noNetwork: {
+    FI: 'Hups, ei verkkoyhteyttä',
+    EN: 'Boohoo, no network connection',
+    SV: 'Jävla, inget nätverk',
+  },
+};
+
+export { languages, translations };

@@ -2,11 +2,12 @@ import React from 'react';
 import { useLanguage } from '../hooks/LanguageContext';
 import useLocalStorage from '../hooks/useLocalStorage';
 import styled from 'styled-components';
+import { translations } from '../utils/constants';
 import { BiSearch } from 'react-icons/bi';
 
 const SearchFormContainer = styled.div`
   background: white;
-  padding: 16px;
+  padding: calc(var(--spacing) * 4);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   display: flex;
   align-items: center;
@@ -15,7 +16,7 @@ const SearchFormContainer = styled.div`
 const FormInputText = styled.input`
   border: 0;
   font-size: 16px;
-  padding: 16px;
+  padding: calc(var(--spacing) * 4);
   width: 100%;
   ::placeholder {
     color: #ddd;
@@ -30,7 +31,7 @@ const FormInputSubmit = styled.button`
   font-size: 12px;
   font-weight: 400;
   text-transform: uppercase;
-  padding: 16px;
+  padding: calc(var(--spacing) * 4);
   cursor: pointer;
   transition: background-color 0.3s;
   &[disabled] {
@@ -58,7 +59,7 @@ export default function SearchForm({ handleSubmit }) {
         value={trackingcode}
         onChange={onChange}
         id='search'
-        placeholder='Enter your tracking code'
+        placeholder={translations.placeholder[language.lang]}
       />
       <FormInputSubmit
         type='button'
@@ -67,7 +68,7 @@ export default function SearchForm({ handleSubmit }) {
           handleSubmit(e, trackingcode, language.lang.toLowerCase())
         }
       >
-        Search
+        {translations.search[language.lang]}
       </FormInputSubmit>
     </SearchFormContainer>
   );

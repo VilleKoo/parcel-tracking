@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import ThemeToggler from './ThemeToggler';
 import LanguageSelect from './LanguageSelect';
 import { FiX, FiMinus } from 'react-icons/fi';
+import { useLanguage } from '../hooks/LanguageContext';
+import { translations } from '../utils/constants';
 
 const TitleBarContainer = styled.div`
   background-color: hsla(216, 18%, 14%, 1);
   color: white;
-  padding: 4px 12px;
+  padding: var(--spacing) calc(var(--spacing) * 3);
   font-size: 18px;
   display: flex;
   width: 100%;
@@ -17,7 +19,7 @@ const TitleBarContainer = styled.div`
     font-size: 14px;
     font-weight: 400;
     margin: 0;
-    padding: 8px 0;
+    padding: calc(var(--spacing) * 2) 0;
     user-select: none;
     &:hover {
       cursor: move;
@@ -48,7 +50,7 @@ const ActionButton = styled.button`
   background: #181a21;
   border-radius: 4px;
   border: none;
-  margin-right: 8px;
+  margin-right: calc(var(--spacing) * 2);
   color: inherit;
   cursor: pointer;
   text-align: center;
@@ -64,12 +66,12 @@ const ActionButton = styled.button`
 `;
 
 export default function TitleBar({
-  title,
   handleClose,
   handleMinimize,
   toggleTheme,
   isActive,
 }) {
+  const language = useLanguage();
   return (
     <TitleBarContainer>
       <ButtonContainer>
@@ -97,7 +99,7 @@ export default function TitleBar({
         </ActionButton>
       </ButtonContainer>
       <TitleContainer>
-        <h1>{title}</h1>
+        <h1>{translations.appTitle[language.lang]}</h1>
       </TitleContainer>
       <LanguageSelect />
       <ThemeTogglerContainer>
