@@ -6,7 +6,7 @@ import { translations } from '../utils/constants';
 import { BiSearch } from 'react-icons/bi';
 
 const SearchFormContainer = styled.div`
-  background: var(--white);
+  background: white;
   padding: calc(var(--spacing) * 4);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   display: flex;
@@ -15,28 +15,28 @@ const SearchFormContainer = styled.div`
 
 const FormInputText = styled.input`
   border: 0;
-  font-size: var(--fontsize-normal);
+  font-size: 16px;
   padding: calc(var(--spacing) * 4);
-  flex: 1;
+  width: 100%;
   ::placeholder {
-    color: var(--medium-gray);
+    color: #ddd;
   }
 `;
 
 const FormInputSubmit = styled.button`
-  background-color: var(--red-solid);
+  background-color: hsla(0, 84%, 64%, 1);
+  color: white;
   border: 0;
-  border-radius: calc(var(--spacing) * 2);
-  color: var(--white);
-  cursor: pointer;
-  font-size: var(--fontsize-small);
+  border-radius: 8px;
+  font-size: 12px;
   font-weight: 400;
   text-transform: uppercase;
   padding: calc(var(--spacing) * 4);
+  cursor: pointer;
   transition: background-color 0.3s;
   &[disabled] {
     cursor: not-allowed;
-    background-color: var(--red-50);
+    background-color: hsla(0, 84%, 64%, 0.5);
   }
 `;
 

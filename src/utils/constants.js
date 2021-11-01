@@ -16,9 +16,9 @@ const translations = {
     SV: 'Laddar',
   },
   search: {
-    FI: 'Hae lähetys',
-    EN: 'Find the item',
-    SV: 'Sök försändelse',
+    FI: 'Hae',
+    EN: 'Search',
+    SV: 'Sök',
   },
   placeholder: {
     FI: 'Syötä lähetystunnus',
