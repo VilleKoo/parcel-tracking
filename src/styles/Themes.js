@@ -4,16 +4,12 @@ export const light = {
   toggleBorder: '#FFF',
   background: '#363537',
   scrollbarThumb: 'hsla(216, 18%, 70%, 1)',
-  diamondBackground: 'var(--red-solid)',
-  diamondForeground: 'var(--background-dark)',
 };
 
 export const dark = {
-  body: 'var(--background-dark)',
+  body: 'hsla(216, 18%, 16%, 1)',
   text: '#FAFAFA',
   toggleBorder: '#6B8096',
   background: '#999',
   scrollbarThumb: 'hsla(216, 18%, 10%, 1)',
-  diamondBackground: 'var(--red-solid)',
-  diamondForeground: 'white',
 };

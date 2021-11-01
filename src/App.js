@@ -14,8 +14,6 @@ import GlobalStyle from './styles/GlobalStyles';
 import { light, dark } from './styles/Themes';
 // Misc
 import { sampleData } from './utils/sampleData';
-import { LastFetchedProvider } from './hooks/LastFetchedContext';
-import LastFetched from './components/LastFetched';
 const { ipcRenderer } = window.require('electron');
 
 const AppContainer = styled.div`
@@ -105,7 +103,6 @@ function App() {
           isLoading={isLoading}
           parcelInfo={appState.info}
         />
-        <LastFetched />
       </>
     ) : (
       <Offline />
@@ -121,9 +118,7 @@ function App() {
           toggleTheme={themeToggler}
           isActive={theme === 'light' ? false : true}
         />
-        <LastFetchedProvider>
-          <AppContainer>{content}</AppContainer>
-        </LastFetchedProvider>
+        <AppContainer>{content}</AppContainer>
       </LanguageProvider>
     </ThemeProvider>
   );

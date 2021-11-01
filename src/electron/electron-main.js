@@ -12,7 +12,6 @@ try {
 } catch (_) {}
 
 const { app, ipcMain, net, screen, BrowserWindow } = electron;
-// console.log(app.commandLine.getSwitchValue('arg1'));
 
 ipcMain.handle('app:quit', () => app.quit());
 

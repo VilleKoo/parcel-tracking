@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { SpinnerDiamond } from 'spinners-react';
 import styled from 'styled-components';
 import { useLanguage } from '../hooks/LanguageContext';
-import { ThemeContext } from 'styled-components';
 import { translations } from '../utils/constants';
 
 const LoadingContainer = styled.div`
@@ -16,16 +15,11 @@ const LoadingContainer = styled.div`
 `;
 
 export default function Loading() {
-  const theme = useContext(ThemeContext);
   const language = useLanguage();
-  console.log('Current theme: ', theme);
   return (
     <LoadingContainer>
       <p>{translations.loading[language.lang]}</p>
-      <SpinnerDiamond
-        color={theme.diamondBackground}
-        secondaryColor={theme.diamondForeground}
-      />
+      <SpinnerDiamond color={'#ff8000'} secondaryColor={'#394a58'} />
     </LoadingContainer>
   );
 }
