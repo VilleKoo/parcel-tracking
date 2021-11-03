@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import useLocalStorage from './useLocalStorage';
 
 const LanguageContext = React.createContext();
@@ -9,6 +9,11 @@ export function useLanguage() {
 
 export function LanguageProvider({ children }) {
   const [language, setLanguage] = useLocalStorage('language', 'FI');
+  const [isLoading, setIsLoading] = useState(false);
+
+  function setLoadingState(val) {
+    return setIsLoading(val);
+  }
 
   function changeLang(lang) {
     return setLanguage(lang);
@@ -16,7 +21,12 @@ export function LanguageProvider({ children }) {
 
   return (
     <LanguageContext.Provider
-      value={{ lang: language, changeLang: changeLang }}
+      value={{
+        lang: language,
+        isLoading: isLoading,
+        changeLang: changeLang,
+        setLoadingState: setLoadingState,
+      }}
     >
       {children}
     </LanguageContext.Provider>

@@ -2,7 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  padding: var(--spacing) calc(var(--spacing) * 8);
+  color: var(--yellow);
+  font-size: var(--fontsize-normal);
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing) calc(var(--spacing) * 6);
 `;
 
 export default function ParcelInfo({ data }) {

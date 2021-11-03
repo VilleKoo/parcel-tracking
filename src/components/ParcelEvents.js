@@ -22,6 +22,7 @@ const EventsTitle = styled.h4`
 `;
 
 export default function ParcelEvents({ events, title, isLoading, parcelInfo }) {
+  if (isLoading) return <Loading />;
   const allEvents = events?.map((event) => (
     <ParcelEvent event={event} key={event.timestamp}></ParcelEvent>
   ));
@@ -29,7 +30,7 @@ export default function ParcelEvents({ events, title, isLoading, parcelInfo }) {
     <EventsContainer>
       <EventsTitle>{title}</EventsTitle>
       <ParcelInfo data={parcelInfo} />
-      {isLoading ? <Loading /> : <EventsList>{allEvents}</EventsList>}
+      <EventsList>{allEvents}</EventsList>
     </EventsContainer>
   );
 }

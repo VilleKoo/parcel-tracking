@@ -23,7 +23,7 @@ const getTrackingData = (trackingID, language) => {
       await page.waitForSelector('.page-menu-row, .error-box');
 
       const getEvents = await page.evaluate(() => {
-        const error = document.querySelector('.error-box');
+        const error = document.querySelector('.error-box .error-box-header');
         let results = [];
         let info = [];
         let title = '';
@@ -50,7 +50,7 @@ const getTrackingData = (trackingID, language) => {
             '.wd_shipment_dimensions'
           );
 
-          const getParentText = (element) =>
+          /* const getParentText = (element) =>
             element.parentElement.previousElementSibling.innerText;
 
           if (infoContainer) {
@@ -76,7 +76,7 @@ const getTrackingData = (trackingID, language) => {
             };
 
             info.push(weight, volume, dimensions);
-          }
+          } */
         } else {
           results = [];
           title = document.querySelector('.error-box').innerText;

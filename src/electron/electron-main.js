@@ -57,7 +57,7 @@ function createWindow(isOnline) {
 
   mainWindow.removeMenu();
   mainWindow.loadURL(startUrl);
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
   mainWindow.on('closed', () => (mainWindow = null));
   /* installExtension(REACT_DEVELOPER_TOOLS)
     .then((name) => console.log(`Added Extension:  ${name}`))

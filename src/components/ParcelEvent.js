@@ -12,6 +12,16 @@ const ListItem = styled.li`
     padding: 0 calc(var(--spacing) * 2);
     flex: 1;
   }
+  & span:first-child {
+    padding-left: 0;
+  }
+  & span:last-child {
+    padding-right: 0;
+    text-align: right;
+  }
+  & span:nth-child(2) {
+    text-align: center;
+  }
 `;
 
 export default function ParcelEvent({ event }) {

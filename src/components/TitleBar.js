@@ -15,6 +15,13 @@ const TitleBarContainer = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
+`;
+
+const TitleContainer = styled.div`
+  color: inherit;
+  flex: 2;
+  text-align: center;
+  -webkit-app-region: drag;
   h1 {
     font-size: 14px;
     font-weight: 400;
@@ -25,13 +32,6 @@ const TitleBarContainer = styled.div`
       cursor: move;
     }
   }
-`;
-
-const TitleContainer = styled.div`
-  color: inherit;
-  flex: 2;
-  text-align: center;
-  -webkit-app-region: drag;
   &:hover {
     cursor: move;
   }
