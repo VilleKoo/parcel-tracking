@@ -6,16 +6,21 @@ import { translations } from '../utils/constants';
 import { BiSearch } from 'react-icons/bi';
 
 const SearchFormContainer = styled.div`
-  background: white;
+  background: ${({ theme }) => theme.searchBackground};
   padding: calc(var(--spacing) * 4);
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
   display: flex;
   align-items: center;
 `;
 
 const FormInputText = styled.input`
+  background: transparent;
   border: 0;
+  color: ${({ theme }) => theme.text};
   font-size: 16px;
+  flex: 1;
   padding: calc(var(--spacing) * 4);
   width: 100%;
   ::placeholder {
@@ -24,10 +29,10 @@ const FormInputText = styled.input`
 `;
 
 const FormInputSubmit = styled.button`
-  background-color: hsla(0, 84%, 64%, 1);
+  background-color: #5451ab;
   color: white;
   border: 0;
-  border-radius: 8px;
+  border-radius: 36px;
   font-size: 12px;
   font-weight: 400;
   text-transform: uppercase;
@@ -38,6 +43,11 @@ const FormInputSubmit = styled.button`
     cursor: not-allowed;
     background-color: hsla(0, 84%, 64%, 0.5);
   }
+`;
+
+const Icon = styled.span`
+  line-height: 1;
+  fill: ${({ theme }) => theme.text};
 `;
 
 export default function SearchForm({ handleSubmit }) {
@@ -51,9 +61,9 @@ export default function SearchForm({ handleSubmit }) {
 
   return (
     <SearchFormContainer>
-      <span>
-        <BiSearch fill='#DDDDDD' />
-      </span>
+      <Icon>
+        <BiSearch />
+      </Icon>
       <FormInputText
         type='text'
         value={trackingcode}

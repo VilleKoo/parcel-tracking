@@ -4,12 +4,12 @@ import SearchForm from './components/SearchForm';
 import ParcelEvents from './components/ParcelEvents';
 import TitleBar from './components/TitleBar';
 import Offline from './components/Offline';
-import LastFetched from './components/LastFetched';
+// import LastFetched from './components/LastFetched';
 // Hooks
 import useNetwork from './hooks/useNetwork';
 import useDarkerMode from './hooks/useDarkerMode';
 // Contexts
-import { LastFetchedProvider } from './hooks/LastFetchedContext';
+// import { LastFetchedProvider } from './hooks/LastFetchedContext';
 import { useLanguage } from './hooks/LanguageContext';
 // Styles
 import styled, { ThemeProvider } from 'styled-components';
@@ -115,9 +115,8 @@ function App() {
         toggleTheme={themeToggler}
         isActive={theme === 'light' ? false : true}
       />
-      <LastFetchedProvider>
-        <AppContainer>{content}</AppContainer>
-      </LastFetchedProvider>
+
+      <AppContainer>{content}</AppContainer>
     </ThemeProvider>
   );
 }

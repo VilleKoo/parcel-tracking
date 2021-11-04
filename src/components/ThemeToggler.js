@@ -35,7 +35,7 @@ const Button = styled.button`
 
 const ToggleDisplay = styled.span`
   background-color: transparent;
-  border: 1px solid hsla(216, 18%, 10%, 1);
+  border: 1px solid var(--dark-cyan);
   border-radius: 100vw;
   pointer-events: none;
   display: block;
@@ -95,12 +95,10 @@ export default function ThemeToggler({ toggleTheme, isActive }) {
             xmlns='http://www.w3.org/2000/svg'
             aria-hidden='true'
             focusable='false'
-            stroke='black'
           ></BiSun>
         </IconContainer>
         <IconContainer>
           <BiMoon
-            fill='none'
             xmlns='http://www.w3.org/2000/svg'
             aria-hidden='true'
             focusable='false'

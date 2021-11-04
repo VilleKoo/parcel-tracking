@@ -7,9 +7,9 @@ import { useLanguage } from '../hooks/LanguageContext';
 import { translations } from '../utils/constants';
 
 const TitleBarContainer = styled.div`
-  background-color: hsla(216, 18%, 14%, 1);
+  background-color: #101010;
   color: white;
-  padding: var(--spacing) calc(var(--spacing) * 3);
+  padding: calc(var(--spacing) * 3);
   font-size: 18px;
   display: flex;
   width: 100%;
@@ -58,8 +58,8 @@ const ActionButton = styled.button`
   width: 22px;
   height: 22px;
   svg {
-    stroke: white;
-    stroke-width: 1;
+    stroke: var(--dark-cyan);
+    stroke-width: 2;
     width: 100%;
     height: 100%;
   }

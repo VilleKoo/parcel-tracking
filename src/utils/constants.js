@@ -16,9 +16,9 @@ const translations = {
     SV: 'Laddar',
   },
   search: {
-    FI: 'Hae',
-    EN: 'Search',
-    SV: 'Sök',
+    FI: 'Hae lähetys',
+    EN: 'Find the item',
+    SV: 'Sök försändelse',
   },
   placeholder: {
     FI: 'Syötä lähetystunnus',
@@ -26,8 +26,8 @@ const translations = {
     SV: 'Mata in försändelsekoden',
   },
   noNetwork: {
-    FI: 'Hups, ei verkkoyhteyttä',
-    EN: 'Boohoo, no network connection',
+    FI: 'Hups, ei verkkoyhteyttä :(',
+    EN: 'Boohoo, no network connection. Sad :(',
     SV: 'Jävla, inget nätverk',
   },
 };

@@ -40,8 +40,9 @@ const GlobalStyle = createGlobalStyle`
     --red-solid: rgba(240, 86, 86, 1);
     --red-50: rgba(240, 86, 86, 0.5);
     --yellow: #FEC260;
+    --dark-cyan: #398084;
+    
     --toolbar-color: #1d222a;
-
     --spacing: 4px;
   }
 
