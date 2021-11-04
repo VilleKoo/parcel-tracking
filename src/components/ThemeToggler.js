@@ -12,18 +12,7 @@ const Button = styled.button`
   overflow: hidden;
   width: 32px;
   height: 32px;
-  &:focus {
-    outline: 1px dotted #212121;
-    outline: 1px auto -webkit-focus-ring-color;
-    outline-offset: 2px;
-  }
-  &:focus,
-  &:focus:not(:focus-visible) span {
-    outline: 0;
-  }
-  &[aria-pressed='true'] span {
-    //border-color: white;
-  }
+
   &[aria-pressed='true'] span div {
     transform: translate(0, -200%);
   }
@@ -86,6 +75,7 @@ export default function ThemeToggler({ toggleTheme, isActive }) {
     <Button
       type='button'
       aria-pressed={isActive}
+      title={!isActive ? 'Switch to dark mode' : 'Switch to light mode'}
       onClick={(e) => handleClick(e)}
     >
       <ToggleDisplay className='Toggle__display' hidden>

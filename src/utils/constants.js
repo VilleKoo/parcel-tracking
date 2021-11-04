@@ -30,6 +30,16 @@ const translations = {
     EN: 'Boohoo, no network connection. Sad :(',
     SV: 'Jävla, inget nätverk',
   },
+  appCloseButton: {
+    FI: 'Sulje sovellus',
+    EN: 'Close the application',
+    SV: 'Jävla, inget nätverk',
+  },
+  appMinimizeButton: {
+    FI: 'Pienennä sovellus',
+    EN: 'Minimize the application',
+    SV: 'Jävla, inget nätverk',
+  },
 };
 
 export { languages, translations };

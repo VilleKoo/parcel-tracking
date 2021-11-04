@@ -45,6 +45,7 @@ function App() {
    *
    * @param {document#event:onSubmit} e
    * @param {string} itemId Parcel ID as an alphanumeric string
+   * @param {string} language user selected language abbreviation
    */
 
   const getEvents = (e, itemId, language) => {

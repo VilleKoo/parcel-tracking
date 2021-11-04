@@ -76,7 +76,7 @@ export default function TitleBar({
     <TitleBarContainer>
       <ButtonContainer>
         <ActionButton
-          name='close application'
+          title='close application'
           type='button'
           onClick={handleClose}
         >
@@ -87,7 +87,7 @@ export default function TitleBar({
           />
         </ActionButton>
         <ActionButton
-          name='minimize application'
+          title='minimize application'
           type='button'
           onClick={handleMinimize}
         >
