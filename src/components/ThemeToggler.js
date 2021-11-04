@@ -35,7 +35,7 @@ const Button = styled.button`
 
 const ToggleDisplay = styled.span`
   background-color: transparent;
-  border: 1px solid var(--dark-cyan);
+  border: 2px solid var(--primary-accent-color);
   border-radius: 100vw;
   pointer-events: none;
   display: block;
@@ -44,7 +44,6 @@ const ToggleDisplay = styled.span`
   position: relative;
   transition: 250ms;
   overflow: hidden;
-  // padding: 4px;
 `;
 
 const IconContainer = styled.div`
@@ -52,7 +51,7 @@ const IconContainer = styled.div`
   color: white;
   width: 100%;
   height: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
   overflow: hidden;
   display: flex;
   flex-direction: row;
@@ -99,6 +98,7 @@ export default function ThemeToggler({ toggleTheme, isActive }) {
         </IconContainer>
         <IconContainer>
           <BiMoon
+            fill='none'
             xmlns='http://www.w3.org/2000/svg'
             aria-hidden='true'
             focusable='false'

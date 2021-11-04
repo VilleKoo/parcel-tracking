@@ -22,6 +22,7 @@ const FormInputText = styled.input`
   font-size: 16px;
   flex: 1;
   padding: calc(var(--spacing) * 4);
+  margin: 0 calc(var(--spacing) * 4);
   width: 100%;
   ::placeholder {
     color: #ddd;
@@ -29,7 +30,7 @@ const FormInputText = styled.input`
 `;
 
 const FormInputSubmit = styled.button`
-  background-color: #5451ab;
+  background-color: var(--dark-purple);
   color: white;
   border: 0;
   border-radius: 36px;

@@ -58,7 +58,7 @@ const ActionButton = styled.button`
   width: 22px;
   height: 22px;
   svg {
-    stroke: var(--dark-cyan);
+    stroke: var(--primary-accent-color);
     stroke-width: 2;
     width: 100%;
     height: 100%;

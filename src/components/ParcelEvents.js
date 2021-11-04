@@ -7,18 +7,19 @@ import styled from 'styled-components';
 const EventsContainer = styled.div`
   color: var(--primary-text-color);
   flex: 1;
+  margin-top: calc(var(--spacing) * 4);
 `;
 const EventsList = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
-  padding: calc(var(--spacing) * 6);
+  padding: calc(var(--spacing) * 4) calc(var(--spacing) * 6);
   margin: 0;
 `;
 
 const EventsTitle = styled.h4`
   text-align: center;
-  margin: calc(var(--spacing) * 6) 0;
+  margin: calc(var(--spacing) * 6) 0 calc(var(--spacing) * 4) 0;
 `;
 
 export default function ParcelEvents({ events, title, isLoading, parcelInfo }) {

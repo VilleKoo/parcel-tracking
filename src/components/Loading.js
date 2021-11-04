@@ -19,7 +19,7 @@ export default function Loading() {
   return (
     <LoadingContainer>
       <p>{translations.loading[language.lang]}</p>
-      <SpinnerDiamond color={'#ff8000'} secondaryColor={'#394a58'} />
+      <SpinnerDiamond color={'#5451ab'} secondaryColor={'#394a58'} />
     </LoadingContainer>
   );
 }

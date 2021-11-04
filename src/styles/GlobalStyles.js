@@ -41,15 +41,21 @@ const GlobalStyle = createGlobalStyle`
     --red-50: rgba(240, 86, 86, 0.5);
     --yellow: #FEC260;
     --dark-cyan: #398084;
-    
+    --dark-purple: #5451ab;
     --toolbar-color: #1d222a;
     --spacing: 4px;
+
+    --primary-accent-color: #398084;
+    --secondary-accent-color: #5451ab;
+    --dark-accent-color: #12161b;
+
   }
 
   body {
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.4;
     margin: 0;
     overflow: hidden;
   }

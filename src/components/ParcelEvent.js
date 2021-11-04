@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 const ListItem = styled.li`
   margin-bottom: calc(var(--spacing) * 4);
-  padding-bottom: calc(var(--spacing) * 2);
+  padding-bottom: calc(var(--spacing) * 4);
   font-size: 14px;
   display: flex;
-  border-bottom: solid 1px #272727;
+  border-bottom: solid 1px ${({ theme }) => theme.listBorder};
   color: ${({ theme }) => theme.text};
   & span {
     padding: 0 calc(var(--spacing) * 2);
