@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useLanguage } from '../hooks/LanguageContext';
+import { useApp } from '../hooks/AppContext';
 import { translations } from '../utils/constants';
 
 const OfflineContainer = styled.div`
@@ -8,10 +8,10 @@ const OfflineContainer = styled.div`
 `;
 
 export default function Offline() {
-  const language = useLanguage();
+  const appData = useApp();
   return (
     <OfflineContainer>
-      <p>{translations.noNetwork[language.lang]}</p>
+      <p>{translations.noNetwork[appData.lang]}</p>
     </OfflineContainer>
   );
 }

@@ -1,15 +1,20 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import useLocalStorage from './useLocalStorage';
+import { translations } from '../utils/constants';
 
-const LanguageContext = React.createContext();
+const AppContext = React.createContext();
 
-export function useLanguage() {
-  return useContext(LanguageContext);
+export function useApp() {
+  return useContext(AppContext);
 }
 
-export function LanguageProvider({ children }) {
+export function AppProvider({ children }) {
   const [language, setLanguage] = useLocalStorage('language', 'FI');
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    document.title = translations.appTitle[language];
+  });
 
   function setLoadingState(val) {
     return setIsLoading(val);
@@ -20,7 +25,7 @@ export function LanguageProvider({ children }) {
   }
 
   return (
-    <LanguageContext.Provider
+    <AppContext.Provider
       value={{
         lang: language,
         isLoading: isLoading,
@@ -29,6 +34,6 @@ export function LanguageProvider({ children }) {
       }}
     >
       {children}
-    </LanguageContext.Provider>
+    </AppContext.Provider>
   );
 }

@@ -49,16 +49,20 @@ const GlobalStyle = createGlobalStyle`
     --secondary-accent-color: #5451ab;
     --dark-accent-color: #12161b;
 
+    --font-weight-bold: 500;
+
   }
 
   body {
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: 'IBM Plex Mono', serif;
     line-height: 1.4;
     margin: 0;
     overflow: hidden;
   }
+
+  h2 { font-weight: 500 }
 
   ::-webkit-scrollbar-track {
     background: transparent;

@@ -10,7 +10,7 @@ import useNetwork from './hooks/useNetwork';
 import useDarkerMode from './hooks/useDarkerMode';
 // Contexts
 // import { LastFetchedProvider } from './hooks/LastFetchedContext';
-import { useLanguage } from './hooks/LanguageContext';
+import { useApp } from './hooks/AppContext';
 // Styles
 import styled, { ThemeProvider } from 'styled-components';
 import GlobalStyle from './styles/GlobalStyles';
@@ -38,8 +38,9 @@ function App() {
   });
 
   const [theme, themeToggler] = useDarkerMode();
-  const loading = useLanguage();
+  const appData = useApp();
   const network = useNetwork();
+
   /**
    * Handles submitting form and updates the state.
    *
@@ -66,7 +67,7 @@ function App() {
       /* the real deal */
 
       (async () => {
-        loading.setLoadingState(true);
+        appData.setLoadingState(true);
 
         setAppState({
           ...appState,
@@ -77,7 +78,7 @@ function App() {
         const result = await ipcRenderer.invoke('get-events', itemId, language);
 
         const { results, error, title, info } = result;
-        loading.setLoadingState(false);
+        appData.setLoadingState(false);
 
         setAppState({
           events: results,
@@ -93,20 +94,6 @@ function App() {
   const handleAppClose = () => ipcRenderer.invoke('app:quit');
   const handleAppMinimize = () => ipcRenderer.invoke('app:minimize');
 
-  const content =
-    network === 'online' ? (
-      <>
-        <SearchForm handleSubmit={getEvents} />
-        <ParcelEvents
-          title={appState.title}
-          events={appState.events}
-          isLoading={loading.isLoading}
-          parcelInfo={appState.info}
-        />
-      </>
-    ) : (
-      <Offline />
-    );
   return (
     <ThemeProvider theme={theme === 'light' ? light : dark}>
       <GlobalStyle />
@@ -116,8 +103,21 @@ function App() {
         toggleTheme={themeToggler}
         isActive={theme === 'light' ? false : true}
       />
-
-      <AppContainer>{content}</AppContainer>
+      <AppContainer>
+        {network !== 'online' ? (
+          <Offline />
+        ) : (
+          <>
+            <SearchForm handleSubmit={getEvents} />
+            <ParcelEvents
+              title={appState.title}
+              events={appState.events}
+              isLoading={appData.isLoading}
+              parcelInfo={appState.info}
+            />
+          </>
+        )}
+      </AppContainer>
     </ThemeProvider>
   );
 }

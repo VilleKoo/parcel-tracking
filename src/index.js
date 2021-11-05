@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { LanguageProvider } from './hooks/LanguageContext';
+import { AppProvider } from './hooks/AppContext';
 
 ReactDOM.render(
-  <LanguageProvider>
+  <AppProvider>
     <App />
-  </LanguageProvider>,
+  </AppProvider>,
   document.getElementById('root')
 );

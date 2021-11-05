@@ -1,7 +1,7 @@
 import React from 'react';
 import { SpinnerDiamond } from 'spinners-react';
 import styled from 'styled-components';
-import { useLanguage } from '../hooks/LanguageContext';
+import { useApp } from '../hooks/AppContext';
 import { translations } from '../utils/constants';
 
 const LoadingContainer = styled.div`
@@ -15,10 +15,10 @@ const LoadingContainer = styled.div`
 `;
 
 export default function Loading() {
-  const language = useLanguage();
+  const appData = useApp();
   return (
     <LoadingContainer>
-      <p>{translations.loading[language.lang]}</p>
+      <p>{translations.loading[appData.lang]}</p>
       <SpinnerDiamond color={'#5451ab'} secondaryColor={'#394a58'} />
     </LoadingContainer>
   );

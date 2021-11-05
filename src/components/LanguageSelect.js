@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLanguage } from '../hooks/LanguageContext';
+import { useApp } from '../hooks/AppContext';
 import styled from 'styled-components';
 import { languages } from '../utils/constants';
 
@@ -22,8 +22,8 @@ const Select = styled.select`
 `;
 
 export default function LanguageSelect() {
-  const lala = useLanguage();
-  const defaultLanguage = lala.lang;
+  const appData = useApp();
+  const defaultLanguage = appData.lang;
   function getLanguages(obj) {
     let languages = [];
     for (const [key, value] of Object.entries(obj)) {
@@ -40,7 +40,7 @@ export default function LanguageSelect() {
     <div>
       <Select
         defaultValue={defaultLanguage}
-        onChange={(e) => lala.changeLang(e.target.value)}
+        onChange={(e) => appData.changeLang(e.target.value)}
         aria-label='Select language'
       >
         {getLanguages(languages)}

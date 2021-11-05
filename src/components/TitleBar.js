@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import ThemeToggler from './ThemeToggler';
 import LanguageSelect from './LanguageSelect';
 import { FiX, FiMinus } from 'react-icons/fi';
-import { useLanguage } from '../hooks/LanguageContext';
+import { useApp } from '../hooks/AppContext';
 import { translations } from '../utils/constants';
 
 const TitleBarContainer = styled.div`
   background-color: #101010;
-  color: white;
+  color: #d7e9ea;
   padding: calc(var(--spacing) * 3);
   font-size: 18px;
   display: flex;
@@ -71,7 +71,7 @@ export default function TitleBar({
   toggleTheme,
   isActive,
 }) {
-  const language = useLanguage();
+  const appData = useApp();
   return (
     <TitleBarContainer>
       <ButtonContainer>
@@ -99,7 +99,7 @@ export default function TitleBar({
         </ActionButton>
       </ButtonContainer>
       <TitleContainer>
-        <h1>{translations.appTitle[language.lang]}</h1>
+        <h1>{translations.appTitle[appData.lang]}</h1>
       </TitleContainer>
       <LanguageSelect />
       <ThemeTogglerContainer>

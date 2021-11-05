@@ -9,7 +9,7 @@ export const light = {
 
 export const dark = {
   body: 'hsla(216, 18%, 16%, 1)',
-  text: '#FAFAFA',
+  text: '#d7e9ea',
   listBorder: 'var(--dark-accent-color)',
   background: '#999',
   scrollbarThumb: 'hsla(216, 18%, 10%, 1)',
