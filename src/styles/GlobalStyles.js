@@ -45,7 +45,7 @@ const GlobalStyle = createGlobalStyle`
     --toolbar-color: #1d222a;
     --spacing: 4px;
 
-    --primary-accent-color: #398084;
+    --primary-accent-color: #B1EDE8;
     --secondary-accent-color: #5451ab;
     --dark-accent-color: #12161b;
 

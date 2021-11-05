@@ -4,7 +4,8 @@ export const light = {
   listBorder: '#d3d9de',
   background: '#363537',
   scrollbarThumb: 'hsla(216, 18%, 70%, 1)',
-  searchBackground: 'white',
+  searchBackground: 'var(--white)',
+  buttonDisabled: '#d7d6ef',
 };
 
 export const dark = {
@@ -14,4 +15,5 @@ export const dark = {
   background: '#999',
   scrollbarThumb: 'hsla(216, 18%, 10%, 1)',
   searchBackground: '#12161b',
+  buttonDisabled: '#201f3e',
 };

@@ -47,7 +47,13 @@ const FormInputText = styled.input`
 `;
 
 const FormInputSubmit = styled.button`
-  background-color: var(--secondary-accent-color);
+  // background-color: var(--secondary-accent-color);
+  background: linear-gradient(
+    45deg,
+    rgba(84, 81, 171, 1) 0%,
+    rgba(93, 90, 181, 1) 38%,
+    rgba(120, 117, 203, 1) 100%
+  );
   color: var(--white);
   border: 0;
   border-radius: 36px;
@@ -59,7 +65,7 @@ const FormInputSubmit = styled.button`
   transition: background-color 0.3s;
   &[disabled] {
     cursor: not-allowed;
-    background-color: #201f3e;
+    background: ${({ theme }) => theme.buttonDisabled};
   }
 `;
 

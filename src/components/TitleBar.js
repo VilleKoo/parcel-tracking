@@ -7,14 +7,15 @@ import { useApp } from '../hooks/AppContext';
 import { translations } from '../utils/constants';
 
 const TitleBarContainer = styled.div`
-  background-color: #101010;
+  background-color: #111418;
   color: #d7e9ea;
-  padding: calc(var(--spacing) * 3);
   font-size: 18px;
   display: flex;
-  width: 100%;
   justify-content: space-between;
   align-items: center;
+  gap: calc(var(--spacing) * 3);
+  padding: calc(var(--spacing) * 3) calc(var(--spacing) * 4);
+  width: 100%;
 `;
 
 const TitleContainer = styled.div`
@@ -40,6 +41,7 @@ const TitleContainer = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   flex: 0;
+  gap: calc(var(--spacing) * 2);
 `;
 const ThemeTogglerContainer = styled.div`
   display: flex;
@@ -47,10 +49,9 @@ const ThemeTogglerContainer = styled.div`
 `;
 
 const ActionButton = styled.button`
-  background: #181a21;
+  background: #3a4555;
   border-radius: 4px;
   border: none;
-  margin-right: calc(var(--spacing) * 2);
   color: inherit;
   cursor: pointer;
   text-align: center;
@@ -59,7 +60,7 @@ const ActionButton = styled.button`
   height: 22px;
   svg {
     stroke: var(--primary-accent-color);
-    stroke-width: 2;
+    stroke-width: 1;
     width: 100%;
     height: 100%;
   }

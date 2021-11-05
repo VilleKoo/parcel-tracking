@@ -9,7 +9,6 @@ const Select = styled.select`
   border: 0;
   color: var(--primary-text-color-light);
   font-size: 12px;
-  margin-right: calc(var(--spacing) * 4);
   padding: var(--spacing);
   text-transform: uppercase;
   &:hover {
