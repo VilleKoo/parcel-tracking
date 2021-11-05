@@ -91,15 +91,10 @@ function App() {
     }
   };
 
-  const handleAppClose = () => ipcRenderer.invoke('app:quit');
-  const handleAppMinimize = () => ipcRenderer.invoke('app:minimize');
-
   return (
     <ThemeProvider theme={theme === 'light' ? light : dark}>
       <GlobalStyle />
       <TitleBar
-        handleClose={handleAppClose}
-        handleMinimize={handleAppMinimize}
         toggleTheme={themeToggler}
         isActive={theme === 'light' ? false : true}
       />

@@ -5,6 +5,7 @@ import ThemeToggler from './ThemeToggler';
 import LanguageSelect from './LanguageSelect';
 import { useApp } from '../hooks/AppContext';
 import { translations } from '../utils/constants';
+const { ipcRenderer } = window.require('electron');
 
 const TitleBarContainer = styled.div`
   background-color: #111418;
@@ -49,24 +50,22 @@ const ThemeTogglerContainer = styled.div`
   flex: 0;
 `;
 
-export default function TitleBar({
-  handleClose,
-  handleMinimize,
-  toggleTheme,
-  isActive,
-}) {
+export default function TitleBar({ toggleTheme, isActive }) {
   const appData = useApp();
+  const handleAppClose = () => ipcRenderer.invoke('app:quit');
+  const handleAppMinimize = () => ipcRenderer.invoke('app:minimize');
+
   return (
     <TitleBarContainer>
       <WindowControls>
         <WindowControlButton
           title={translations.appCloseButton[appData.lang]}
-          handleClick={handleClose}
+          handleClick={handleAppClose}
           icon={'close'}
         />
         <WindowControlButton
           title={translations.appMinimizeButton[appData.lang]}
-          handleClick={handleMinimize}
+          handleClick={handleAppMinimize}
           icon={'minimize'}
         />
       </WindowControls>
