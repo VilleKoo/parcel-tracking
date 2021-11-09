@@ -1,5 +1,7 @@
 import React from 'react';
+import Offline from './Offline';
 import { useApp } from '../hooks/AppContext';
+import useNetwork from '../hooks/useNetwork';
 import useLocalStorage from '../hooks/useLocalStorage';
 import styled from 'styled-components';
 import { translations } from '../utils/constants';
@@ -47,7 +49,6 @@ const FormInputText = styled.input`
 `;
 
 const FormInputSubmit = styled.button`
-  // background-color: var(--secondary-accent-color);
   background: linear-gradient(
     45deg,
     rgba(84, 81, 171, 1) 0%,
@@ -72,11 +73,14 @@ const FormInputSubmit = styled.button`
 export default function SearchForm({ handleSubmit }) {
   const [trackingcode, setTrackingcode] = useLocalStorage('trackingcode', '');
   const appData = useApp();
+  const network = useNetwork();
 
   const onChange = (e) => {
     const trackingcode = e.target.value.replace(/\W/g, '');
     setTrackingcode(trackingcode);
   };
+
+  if (!network) return <Offline />;
 
   return (
     <SearchFormContainer>

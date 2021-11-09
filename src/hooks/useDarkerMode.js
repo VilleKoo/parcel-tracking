@@ -1,10 +1,10 @@
-import { useLayoutEffect, useState } from 'react';
+import { useLayoutEffect } from 'react';
+import useLocalStorage from './useLocalStorage';
 
 export default function useDarkerMode() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useLocalStorage('theme', 'light');
 
   const setMode = (mode) => {
-    window.localStorage.setItem('theme', mode);
     setTheme(mode);
   };
 
@@ -13,8 +13,7 @@ export default function useDarkerMode() {
   };
 
   useLayoutEffect(() => {
-    const localTheme = window.localStorage.getItem('theme');
-    localTheme ? setTheme(localTheme) : setMode('light');
-  }, []);
+    theme ? setTheme(theme) : setMode('light');
+  });
   return [theme, themeToggler];
 }

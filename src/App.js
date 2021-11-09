@@ -3,10 +3,8 @@ import React, { useState } from 'react';
 import SearchForm from './components/SearchForm';
 import ParcelEvents from './components/ParcelEvents';
 import TitleBar from './components/TitleBar';
-import Offline from './components/Offline';
 // import LastFetched from './components/LastFetched';
 // Hooks
-import useNetwork from './hooks/useNetwork';
 import useDarkerMode from './hooks/useDarkerMode';
 // Contexts
 // import { LastFetchedProvider } from './hooks/LastFetchedContext';
@@ -39,7 +37,7 @@ function App() {
 
   const [theme, themeToggler] = useDarkerMode();
   const appData = useApp();
-  const network = useNetwork();
+  console.log(appData);
 
   /**
    * Handles submitting form and updates the state.
@@ -99,19 +97,13 @@ function App() {
         isActive={theme === 'light' ? false : true}
       />
       <AppContainer>
-        {network !== 'online' ? (
-          <Offline />
-        ) : (
-          <>
-            <SearchForm handleSubmit={getEvents} />
-            <ParcelEvents
-              title={appState.title}
-              events={appState.events}
-              isLoading={appData.isLoading}
-              parcelInfo={appState.info}
-            />
-          </>
-        )}
+        <SearchForm handleSubmit={getEvents} />
+        <ParcelEvents
+          title={appState.title}
+          events={appState.events}
+          isLoading={appData.isLoading}
+          parcelInfo={appState.info}
+        />
       </AppContainer>
     </ThemeProvider>
   );
