@@ -1,7 +1,7 @@
 import React from 'react';
 import Loading from './Loading';
-import ParcelEvent from './ParcelEvent';
-import ParcelInfo from './ParcelInfo';
+import ItemEvent from './ItemEvent';
+import ItemInfo from './ItemInfo';
 import styled from 'styled-components';
 
 const EventsContainer = styled.main`
@@ -22,17 +22,17 @@ const EventsTitle = styled.h2`
   margin: calc(var(--spacing) * 6) 0 calc(var(--spacing) * 4) 0;
 `;
 
-export default function ParcelEvents({ events, title, isLoading, parcelInfo }) {
+export default function ItemEvents({ events, title, isLoading, itemInfo }) {
   if (isLoading) return <Loading />;
   const allEvents = events?.map((event) => (
-    <ParcelEvent event={event} key={event.timestamp}></ParcelEvent>
+    <ItemEvent event={event} key={event.timestamp}></ItemEvent>
   ));
   return (
     <EventsContainer aria-labelledby='mainTitle'>
       <EventsTitle id='mainTitle' tabIndex='0'>
         {title}
       </EventsTitle>
-      <ParcelInfo data={parcelInfo} />
+      <ItemInfo data={itemInfo} />
       <EventsList>{allEvents}</EventsList>
     </EventsContainer>
   );
