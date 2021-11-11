@@ -2,7 +2,7 @@ import { useLayoutEffect } from 'react';
 import useLocalStorage from './useLocalStorage';
 
 export default function useDarkerMode() {
-  const [theme, setTheme] = useLocalStorage('theme', 'light');
+  const [theme, setTheme] = useLocalStorage('theme', '');
 
   const setMode = (mode) => {
     setTheme(mode);
