@@ -5,6 +5,7 @@ const Container = styled.div`
   color: var(--yellow);
   font-size: var(--fontsize-normal);
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   padding: var(--spacing) calc(var(--spacing) * 6);
 `;

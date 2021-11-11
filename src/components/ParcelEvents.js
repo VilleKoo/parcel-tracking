@@ -1,8 +1,7 @@
 import React from 'react';
-//import Loader from './Loader';
 import Loading from './Loading';
 import ParcelEvent from './ParcelEvent';
-// import ParcelInfo from './ParcelInfo';
+import ParcelInfo from './ParcelInfo';
 import styled from 'styled-components';
 
 const EventsContainer = styled.main`
@@ -33,7 +32,7 @@ export default function ParcelEvents({ events, title, isLoading, parcelInfo }) {
       <EventsTitle id='mainTitle' tabIndex='0'>
         {title}
       </EventsTitle>
-      {/*<ParcelInfo data={parcelInfo} />*/}
+      <ParcelInfo data={parcelInfo} />
       <EventsList>{allEvents}</EventsList>
     </EventsContainer>
   );

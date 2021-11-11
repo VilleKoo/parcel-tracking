@@ -29,10 +29,18 @@ const getTrackingData = (trackingID, language) => {
         let title = '';
         if (!error) {
           title = document.querySelector('.status-text').innerText;
-          const getText = (i, className) =>
-            i.querySelector(className).innerText;
 
-          // Get all parcel events
+          const getText = (i, className) => {
+            const element = i.querySelector(className);
+            if (element === null) {
+              return '';
+            } else return element.innerText;
+          };
+
+          const getParentText = (element) =>
+            element.parentElement.previousElementSibling.innerText;
+
+          // Get all item events
           const items = document.querySelectorAll('.page-menu-row');
           items.forEach((item) => {
             results.push({
@@ -42,41 +50,29 @@ const getTrackingData = (trackingID, language) => {
             });
           });
 
-          // Get parcel info
+          // Get item info
           const infoContainer = document.querySelector('.shipment-pickup-info');
-          const weightEl = document.querySelector('.wd_shipment_weight');
-          const volumeEl = document.querySelector('.wd_shipment_volume');
-          const dimensionsEl = document.querySelector(
-            '.wd_shipment_dimensions'
-          );
-
-          /* const getParentText = (element) =>
-            element.parentElement.previousElementSibling.innerText;
-
           if (infoContainer) {
+            const weightEl = document.querySelector('.wd_shipment_weight');
+            const volumeEl = document.querySelector('.wd_shipment_volume');
+            const dimensionsEl = document.querySelector(
+              '.wd_shipment_dimensions'
+            );
+
             const weight = weightEl && {
-              [getParentText(weightEl)]: getText(
-                infoContainer,
-                '.wd_shipment_weight'
-              ),
+              [getParentText(weightEl)]: weightEl.innerText,
             };
 
             const volume = volumeEl && {
-              [getParentText(volumeEl)]: getText(
-                infoContainer,
-                '.wd_shipment_volume'
-              ),
+              [getParentText(volumeEl)]: volumeEl.innerText,
             };
 
             const dimensions = dimensionsEl && {
-              [getParentText(dimensionsEl)]: getText(
-                infoContainer,
-                '.wd_shipment_dimensions'
-              ),
+              [getParentText(dimensionsEl)]: dimensionsEl.innerText,
             };
 
             info.push(weight, volume, dimensions);
-          } */
+          }
         } else {
           results = [];
           title = document.querySelector('.error-box').innerText;

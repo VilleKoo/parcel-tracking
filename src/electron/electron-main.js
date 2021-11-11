@@ -65,7 +65,6 @@ function createWindow(isOnline) {
 }
 
 app.whenReady().then(() => {
-  // const { net } = require('electron');
   createWindow(net.isOnline());
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
