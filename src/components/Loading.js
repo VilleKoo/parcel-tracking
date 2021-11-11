@@ -1,8 +1,9 @@
 import React from 'react';
-import { SpinnerDiamond } from 'spinners-react';
+import Lottie from 'react-lottie';
 import styled from 'styled-components';
 import { useApp } from '../hooks/AppContext';
 import { translations } from '../utils/constants';
+import animationData from '../assets/bear-loader.json';
 
 const LoadingContainer = styled.div`
   display: flex;
@@ -14,12 +15,24 @@ const LoadingContainer = styled.div`
   }
 `;
 
+const LoadingText = styled.h2`
+  text-align: center;
+`;
+
 export default function Loading() {
   const appData = useApp();
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
   return (
     <LoadingContainer>
-      <p>{translations.loading[appData.lang]}</p>
-      <SpinnerDiamond color={'#5451ab'} secondaryColor={'#394a58'} />
+      <LoadingText>{translations.loading[appData.lang]}</LoadingText>
+      <Lottie options={defaultOptions} height={400} width={400} />
     </LoadingContainer>
   );
 }

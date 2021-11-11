@@ -1,5 +1,6 @@
 import React from 'react';
-import Loader from './Loader';
+//import Loader from './Loader';
+import Loading from './Loading';
 import ParcelEvent from './ParcelEvent';
 // import ParcelInfo from './ParcelInfo';
 import styled from 'styled-components';
@@ -23,7 +24,7 @@ const EventsTitle = styled.h2`
 `;
 
 export default function ParcelEvents({ events, title, isLoading, parcelInfo }) {
-  if (isLoading) return <Loader />;
+  if (isLoading) return <Loading />;
   const allEvents = events?.map((event) => (
     <ParcelEvent event={event} key={event.timestamp}></ParcelEvent>
   ));
