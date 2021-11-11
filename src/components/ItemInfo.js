@@ -10,7 +10,7 @@ const Container = styled.div`
   padding: var(--spacing) calc(var(--spacing) * 6);
 `;
 
-export default function ParcelInfo({ data }) {
+export default function ItemInfo({ data }) {
   if (!data.length) return null;
   const results = data
     // remove nullish items from array

@@ -24,9 +24,11 @@ const EventsTitle = styled.h2`
 
 export default function ItemEvents({ events, title, isLoading, itemInfo }) {
   if (isLoading) return <Loading />;
+
   const allEvents = events?.map((event) => (
     <ItemEvent event={event} key={event.timestamp}></ItemEvent>
   ));
+
   return (
     <EventsContainer aria-labelledby='mainTitle'>
       <EventsTitle id='mainTitle' tabIndex='0'>
