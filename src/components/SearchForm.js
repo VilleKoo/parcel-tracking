@@ -1,10 +1,12 @@
 import React from 'react';
 import Offline from './Offline';
+import { useRef } from 'react';
 import { useApp } from '../hooks/AppContext';
 import useNetwork from '../hooks/useNetwork';
 import useLocalStorage from '../hooks/useLocalStorage';
 import styled from 'styled-components';
 import { translations } from '../utils/constants';
+import { BiX } from 'react-icons/bi';
 
 const SearchFormContainer = styled.div`
   background: ${({ theme }) => theme.searchBackground};
@@ -70,10 +72,25 @@ const FormInputSubmit = styled.button`
   }
 `;
 
+const Clear = styled.button`
+  background: transparent;
+  border: 0;
+  color: #ffffff;
+  cursor: pointer;
+`;
+
 export default function SearchForm({ handleSubmit }) {
   const [trackingcode, setTrackingcode] = useLocalStorage('trackingcode', '');
   const appData = useApp();
   const network = useNetwork();
+
+  const inputEl = useRef(null);
+
+  const onButtonClick = (e) => {
+    e.preventDefault();
+    inputEl.current.value = '';
+    inputEl.current.focus();
+  };
 
   const onChange = (e) => {
     const trackingcode = e.target.value.replace(/\W/g, '');
@@ -97,7 +114,11 @@ export default function SearchForm({ handleSubmit }) {
             onChange={onChange}
             id='search'
             disabled={appData.isLoading}
+            ref={inputEl}
           />
+          {/* <Clear onClick={(e) => onButtonClick(e)}>
+            <BiX />
+          </Clear> */}
           <FormInputSubmit
             type='button'
             disabled={!trackingcode.length || appData.isLoading}

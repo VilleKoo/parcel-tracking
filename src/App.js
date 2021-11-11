@@ -37,7 +37,6 @@ function App() {
 
   const [theme, themeToggler] = useDarkerMode();
   const appData = useApp();
-  console.log(appData);
 
   /**
    * Handles submitting form and updates the state.

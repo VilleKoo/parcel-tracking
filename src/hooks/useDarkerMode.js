@@ -13,7 +13,13 @@ export default function useDarkerMode() {
   };
 
   useLayoutEffect(() => {
-    theme ? setTheme(theme) : setMode('light');
+    window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches &&
+    !theme
+      ? setMode('dark')
+      : theme
+      ? setTheme(theme)
+      : setMode('light');
   });
   return [theme, themeToggler];
 }
