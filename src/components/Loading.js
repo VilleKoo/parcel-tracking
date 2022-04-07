@@ -1,7 +1,7 @@
 import React from 'react';
 import Lottie from 'react-lottie';
 import styled from 'styled-components';
-import { useApp } from '../hooks/AppContext';
+import { useApp } from '../context/AppContext';
 import { translations } from '../utils/constants';
 import animationData from '../assets/bear-loader.json';
 

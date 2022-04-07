@@ -41,14 +41,15 @@ export default function useItemEvents() {
 
         const result = await ipcRenderer.invoke('get-events', itemId, language);
 
-        const { results, error, title, info } = result;
+        const { results, errors, title, info, subtitle } = result;
         setLoadingState(false);
 
         setEvents({
           events: results,
           info: info,
-          error: error,
+          errors: errors,
           title: title,
+          subtitle,
           itemId: itemId,
         });
       })();

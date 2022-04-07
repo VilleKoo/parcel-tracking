@@ -1,7 +1,7 @@
 import React from 'react';
 import Offline from './Offline';
 import { useRef } from 'react';
-import { useApp } from '../hooks/AppContext';
+import { useApp } from '../context/AppContext';
 import useNetwork from '../hooks/useNetwork';
 import useLocalStorage from '../hooks/useLocalStorage';
 import styled from 'styled-components';

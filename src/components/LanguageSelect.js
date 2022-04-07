@@ -1,5 +1,5 @@
 import React from 'react';
-import { useApp } from '../hooks/AppContext';
+import { useApp } from '../context/AppContext';
 import styled from 'styled-components';
 import { languages } from '../utils/constants';
 

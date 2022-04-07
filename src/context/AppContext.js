@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import useLocalStorage from './useLocalStorage';
+import useLocalStorage from '../hooks/useLocalStorage';
 import { translations } from '../utils/constants';
 
 const AppContext = React.createContext();

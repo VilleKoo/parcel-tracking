@@ -23,7 +23,7 @@ const AppContainer = styled.div`
   overflow-y: auto;
 `;
 
-function App() {
+export default function App() {
   const [itemEvents, loading, getEvents] = useItemEvents();
   const [theme, themeToggler] = useDarkerMode();
 
@@ -38,6 +38,8 @@ function App() {
         <SearchForm handleSubmit={getEvents} />
         <ItemEvents
           title={itemEvents.title}
+          subtitle={itemEvents.subtitle}
+          errors={itemEvents.errors}
           events={itemEvents.events}
           isLoading={loading}
           itemInfo={itemEvents.info}
@@ -46,5 +48,3 @@ function App() {
     </ThemeProvider>
   );
 }
-
-export default App;

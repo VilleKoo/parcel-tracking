@@ -3,7 +3,7 @@ import WindowControlButton from './WindowControlButton';
 import styled from 'styled-components';
 import ThemeToggler from './ThemeToggler';
 import LanguageSelect from './LanguageSelect';
-import { useApp } from '../hooks/AppContext';
+import { useApp } from '../context/AppContext';
 import { translations } from '../utils/constants';
 const { ipcRenderer } = window.require('electron');
 

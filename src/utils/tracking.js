@@ -20,71 +20,68 @@ const getTrackingData = (trackingID, language) => {
       const page = await browser.newPage();
       await page.goto(url);
 
-      await page.waitForSelector('.page-menu-row, .error-box');
+      await Promise.race([
+        page
+          .waitForSelector('section + section')
+          .then(() => page.click('#show-more-button')),
+        page.waitForSelector('img[src="/img/404-500-error.svg"]'),
+      ]);
 
       const getEvents = await page.evaluate(() => {
-        const error = document.querySelector('.error-box .error-box-header');
         let results = [];
         let info = [];
+        let errors = [];
         let title = '';
+        let subtitle = '';
+        const error = document.querySelector(
+          'img[src="/img/404-500-error.svg"]'
+        );
+
         if (!error) {
-          title = document.querySelector('.status-text').innerText;
+          const btn = document.getElementById('show-more-button');
+          btn.click();
 
-          const getText = (i, className) => {
-            const element = i.querySelector(className);
-            if (element === null) {
-              return '';
-            } else return element.innerText;
-          };
+          title = document.querySelector(
+            'section + section > div:first-child > div:first-child'
+          ).textContent;
 
-          const getParentText = (element) =>
-            element.parentElement.previousElementSibling.innerText;
+          const elements = document.querySelectorAll('[role="group"]');
 
-          // Get all item events
-          const items = document.querySelectorAll('.page-menu-row');
-          items.forEach((item) => {
-            results.push({
-              description: getText(item, '.wd_shipment_event_description'),
-              location: getText(item, '.wd_shipment_event_location'),
-              timestamp: getText(item, '.wd_shipment_event_timestamp'),
-            });
+          elements.forEach((element) => {
+            let obj = {
+              description: '',
+              location: '',
+              timestamp: '',
+            };
+            if (element.children) {
+              obj.timestamp = element.children[0].textContent;
+              obj.description = element.children[1].textContent;
+            }
+            if (element.nextElementSibling) {
+              obj.location = element.nextElementSibling.textContent;
+            }
+            results.push(obj);
           });
-
-          // Get item info
-          const infoContainer = document.querySelector('.shipment-pickup-info');
-          if (infoContainer) {
-            const weightEl = document.querySelector('.wd_shipment_weight');
-            const volumeEl = document.querySelector('.wd_shipment_volume');
-            const dimensionsEl = document.querySelector(
-              '.wd_shipment_dimensions'
-            );
-
-            const weight = weightEl && {
-              [getParentText(weightEl)]: weightEl.innerText,
-            };
-
-            const volume = volumeEl && {
-              [getParentText(volumeEl)]: volumeEl.innerText,
-            };
-
-            const dimensions = dimensionsEl && {
-              [getParentText(dimensionsEl)]: dimensionsEl.innerText,
-            };
-
-            info.push(weight, volume, dimensions);
-          }
         } else {
-          results = [];
-          title = document.querySelector('.error-box').innerText;
-        }
+          const titleElement = error.nextElementSibling;
+          const subtitleElement = titleElement.nextElementSibling;
 
+          results = null;
+          title = titleElement.textContent;
+          subtitle = subtitleElement.textContent;
+          errors = Array.from(subtitleElement.nextElementSibling.children).map(
+            (child) => child.textContent
+          );
+        }
         return {
           results,
           info,
+          errors,
           title,
-          error: !error ? false : true,
+          subtitle,
         };
       });
+
       browser.close();
       return resolve(getEvents);
     } catch (e) {
@@ -92,5 +89,6 @@ const getTrackingData = (trackingID, language) => {
     }
   });
 };
+//getTrackingData('JJFI62974420069974717', 'en');
 
 exports.getTrackingData = getTrackingData;

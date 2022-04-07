@@ -22,18 +22,29 @@ const EventsTitle = styled.h2`
   margin: calc(var(--spacing) * 6) 0 calc(var(--spacing) * 4) 0;
 `;
 
-export default function ItemEvents({ events, title, isLoading, itemInfo }) {
+export default function ItemEvents({
+  events,
+  title,
+  subtitle,
+  isLoading,
+  itemInfo,
+  errors,
+}) {
   if (isLoading) return <Loading />;
 
-  const allEvents = events?.map((event) => (
-    <ItemEvent event={event} key={event.timestamp}></ItemEvent>
+  const allEvents = events?.map((event, index) => (
+    <ItemEvent event={event} key={`${event.timestamp}${index}`}></ItemEvent>
   ));
+  const allErrors =
+    errors && errors.map((error, index) => <p key={index}>{error}</p>);
 
   return (
     <EventsContainer aria-labelledby='mainTitle'>
       <EventsTitle id='mainTitle' tabIndex='0'>
         {title}
       </EventsTitle>
+      <h3>{subtitle}</h3>
+      {allErrors}
       <ItemInfo data={itemInfo} />
       <EventsList>{allEvents}</EventsList>
     </EventsContainer>
